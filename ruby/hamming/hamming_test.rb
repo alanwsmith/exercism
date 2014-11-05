@@ -24,7 +24,6 @@ class HammingTest < MiniTest::Unit::TestCase
   end
 
   def test_ignores_extra_length_on_first_strand_when_longer
-    skip
     assert_equal 1, Hamming.compute('AGAGACTTA', 'AAA')
   end
 
