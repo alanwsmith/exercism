@@ -1,25 +1,43 @@
 class Hamming
-
   def self.compute(reference, examinee)
+    hd = HammingDistance.new(reference: reference, examinee: examinee)
+    hd.distance
+  end
+end
 
-    if reference.length > examinee.length
-      run_length = examinee.length
-    else
-      run_length = reference.length
-    end
 
-    run_length -= 1
+class HammingDistance
 
-    hamming_distance = 0
+  attr_reader :reference, :examinee, :distance
 
-    (0..run_length).each do |string_index|
+  def initialize(args={})
+    @reference = args[:reference]
+    @examinee = args[:examinee]
+    @distance = 0
+    calculate_length
+  end
+
+  def calculate_length
+    (0..pairs_to_count).each do |string_index|
       if examinee[string_index] != reference[string_index]
-        hamming_distance += 1
+        increment_distance
       end
     end
+  end
 
-    hamming_distance
-    
+  def increment_distance
+    @distance += 1
+  end
+
+  def pairs_to_count
+    if reference.length > examinee.length
+      pairs = examinee.length
+    else
+      pairs = reference.length
+    end
+    pairs -= 1    
   end
 
 end
+
+
