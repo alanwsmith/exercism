@@ -5,7 +5,6 @@ class Hamming
   end
 end
 
-
 class HammingDistance
 
   attr_reader :reference, :examinee, :distance
@@ -31,13 +30,10 @@ class HammingDistance
 
   def pairs_to_count
     if reference.length > examinee.length
-      pairs = examinee.length
+      examinee.length - 1
     else
-      pairs = reference.length
+      reference.length - 1
     end
-    pairs -= 1    
   end
 
 end
-
-
